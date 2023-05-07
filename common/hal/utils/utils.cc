@@ -448,9 +448,9 @@ status_t SetRealtimeThread(pthread_t thread) {
       .sched_priority = 1,
   };
   int32_t res =
-      pthread_setschedparam(thread, SCHED_FIFO | SCHED_RESET_ON_FORK, &param);
+      pthread_setschedparam(thread, SCHED_RR | SCHED_RESET_ON_FORK, &param);
   if (res != 0) {
-    ALOGE("%s: Couldn't set SCHED_FIFO", __FUNCTION__);
+    ALOGE("%s: Couldn't set SCHED_RR", __FUNCTION__);
     return BAD_VALUE;
   }
 
